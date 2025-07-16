@@ -1,6 +1,17 @@
 ---
 title: "physical"
+name: "Manuel Villamil"
+date: "Summer 2025"
 output: html_document
 ---
 
+```{r}
 data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt",sep="",header=TRUE)  
+```
+```{r}
+simp <- lm(SIMS~ARM,data=data)
+plot(SIMS~ARM,data=data)
+abline(simp)
+summary.lm(simp)
+```
+
