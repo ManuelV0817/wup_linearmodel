@@ -20,5 +20,7 @@ summary.lm(simp)
 target<-data.frame(ARM=88, GRIP=94)
 ```
 
-
+```{r}
+predict(simp,target,interval=c("prediction"))
+```
 
