@@ -15,3 +15,10 @@ abline(simp)
 summary.lm(simp)
 ```
 
+
+```{r}
+target<-data.frame(ARM=88, GRIP=94)
+```
+
+
+
