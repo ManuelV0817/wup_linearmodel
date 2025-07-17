@@ -1,0 +1,53 @@
+---
+title: "Linear Model"
+name: "Manuel Villamil"
+date: "Summer 2025"
+output: html_document
+---
+
+```{r}
+data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt",sep="",header=TRUE)  
+```
+```{r}
+simp <- lm(SIMS~ARM,data=data)
+plot(SIMS~ARM,data=data)
+abline(simp)
+summary.lm(simp)
+```
+
+```{r}
+target<-data.frame(ARM=88, GRIP=94)
+```
+
+```{r}
+predict(simp,target,interval=c("prediction"))
+```
+
+```{r}
+newGRIP <- lm(SIMS~GRIP,data=data)
+plot(SIMS~GRIP,data=data)
+abline(newGRIP)
+summary.lm(newGRIP)
+```
+
+```{r}
+predict(newGRIP,target,interval=c("prediction"))
+```
+
+```{r}
+halfGRIP <- lm(SIMS~ARM+GRIP,data=data)
+plot(SIMS~ARM+GRIP,data=data)
+abline(halfGRIP)
+summary.lm(halfGRIP)
+```
+
+```{r}
+predict(halfGRIP,target,interval=c("prediction"))
+```
+
+Now what were going to do is compare our three models using the ANOVA command. First were going to compare the model which is halfGRIP with the model simp.
+
+```{r}
+anova(simp,halfGRIP)
+```
+What this is telling us, is that the errors that occur from the model with just ARM in it added up to 217.88. The errors in the model with both ARM and GRIP added up to 188.43 showing that there is less errors in the model with both elements rather than just ARM.
